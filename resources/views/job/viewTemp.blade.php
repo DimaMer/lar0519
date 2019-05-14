@@ -8,9 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-{!! Form::open(['route' => 'ParseController@index']) !!}
-{!! Form::submit('Submit', ['class' => 'btn btn-info']) !!}
-{!! Form::submit() !!}
+
+
 
 {{print_r($index)}}
 
