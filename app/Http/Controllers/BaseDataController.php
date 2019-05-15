@@ -37,7 +37,7 @@ class BaseDataController extends Controller
         }
 
         if ($request->param=='del') {
-            dump($users);
+
             DB::table('vacancy_parser')->where('indexJobAion',$request->id)->delete();
             echo'this column is drop';
             return view('job.viewData', ['users'=>$users]);
