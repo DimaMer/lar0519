@@ -10,5 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', function () {return redirect('/db');});
 Route::resource('/home', 'ParseController');
+Route::get('/db/{id}', 'BaseDataController@show');
+//Route::resource('/db/{id?}/{param?}', 'BaseDataController');  ///????????????
+Route::resource('/db', 'BaseDataController');
+
