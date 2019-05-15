@@ -1,3 +1,7 @@
+{!! Form::open(array('action' => 'BaseDataController@index', 'method' => 'get')) !!}
+{!! Form::submit('HOME') !!}
+{!! Form::close()!!}
+
 <h1>Write, how many Jobs do you want to parse? </h1>
 
 {!! Form::open()!!}

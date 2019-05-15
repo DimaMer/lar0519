@@ -8,13 +8,14 @@
     <title>Document</title>
 </head>
 <body>
-{!! Form::open(['route' => 'ParseController@index']) !!}
-{!! Form::submit('Submit', ['class' => 'btn btn-info']) !!}
-{!! Form::submit() !!}
+
+
 
 {{print_r($index)}}
-
-@foreach ($dataAfterSearch as $key=>$value) {
+{!! Form::open(array('action' => 'BaseDataController@create', 'method' => 'put')) !!}
+{!! Form::submit('Save date to databases!') !!}
+{!! Form::close()!!}
+@foreach ($data as $key=>$value)
 <h1>{{$key}}</h1>
 @foreach ($value as $key1=>$value1) {
 <h2>{{$key1}}</h2>
