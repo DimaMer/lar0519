@@ -3,10 +3,12 @@
 {!! Form::close()!!}
 
 
+@if( $urls->all()==null )
+    <div>the base is empty</div>
+@endif
 
+@foreach ($urls as $l)
 
-@foreach ($lin as $l)
-
-<a href="/db/{{$l->indexJobAion}}">{{$l->httpAinua}}</a><BR>
+    <a href="/db/{{$l->indexJobAion}}">{{$l->httpAinua}}</a><BR>
 
 @endforeach

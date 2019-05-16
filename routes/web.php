@@ -13,6 +13,6 @@
 Route::get('/', function () {return redirect('/db');});
 Route::resource('/home', 'ParseController');
 Route::get('/db/{id}/{param?}', 'BaseDataController@show');
-//Route::resource('/db/{id?}/{param?}', 'BaseDataController');  ///????????????
+
 Route::resource('/db', 'BaseDataController');
 
