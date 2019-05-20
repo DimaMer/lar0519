@@ -1,0 +1,12 @@
+{
+    "https":"https://ain.ua/jobs/vacancy/",
+    "searchClasses":{
+        "vacancy":"vacancy-title",
+        "company":"company-title",
+        "time":"time-passed",
+        "vacancyInfoWrapper":"vacancy-info-wrapper vacancy-block post",
+        "companyDescription":"company-description vacancy-block post",
+        "category":"selected-category",
+        "cityVacancyCity":"selected-city vacancy-city"
+    }
+}

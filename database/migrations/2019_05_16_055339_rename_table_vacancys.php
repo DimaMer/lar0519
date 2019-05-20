@@ -13,7 +13,7 @@ class RenameTableVacancys extends Migration
      */
     public function up()
     {
-        Schema::rename('vacancy_parser', 'Vacancies');//
+        Schema::rename('vacancy_parser', 'vacancies');//
     }
 
     /**
@@ -23,6 +23,6 @@ class RenameTableVacancys extends Migration
      */
     public function down()
     {
-        Schema::rename('Vacancies', 'vacancy_parser');// //
+        Schema::rename('vacancies', 'vacancy_parser');// //
     }
 }

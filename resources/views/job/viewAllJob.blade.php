@@ -1,6 +1,4 @@
-{!! Form::open(array('action' => 'ParseController@index', 'method' => 'get')) !!}
-{!! Form::submit('to parse') !!}
-{!! Form::close()!!}
+
 
 
 @if( $urls->all()==null )
@@ -9,6 +7,6 @@
 
 @foreach ($urls as $l)
 
-    <a href="/db/{{$l->indexJobAion}}">{{$l->httpAinua}}</a><BR>
+    <a href="/{{$l->indexJobAion}}">{{$l->httpAinua}}</a><BR>
 
 @endforeach

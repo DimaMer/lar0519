@@ -3,7 +3,7 @@
 {!! Form::submit('back') !!}
 {!! Form::close()!!}
 
-{!! Form::open(array('url' => "db/$idJob/del", 'method' => 'get')) !!}
+{!! Form::open(array('url' => "/$idJob/del", 'method' => 'get')) !!}
 {!! Form::submit('del') !!}
 {!! Form::close()!!}
 

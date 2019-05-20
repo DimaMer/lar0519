@@ -10,41 +10,30 @@ class BaseDataController extends Controller
 
     public function index(Vacancy $getLinksJob)
     {
-        $urls=$getLinksJob->getLinksJob();
-        return view('job.viewAllJob', ['urls'=>$urls]);
+        $urls = Vacancy::select('indexJobAion', 'httpAinua')->get();
+        return view('job.viewAllJob', ['urls' => $urls]);
     }
-
 
     public function create()
     {
-       echo 'create';
+        echo 'create';
     }
 
 
-    public function store(Request $request)
+    public function show(BaseDataController $getJobVacancy, Request $request)
     {
-        echo 'store';
+        $users = Vacancy::where('indexJobAion', $request->id);
+        if ($users == null) {
+            return redirect(url('/'));
+        }
+        $users = $users->get()->toArray()[0];
+        if ($request->param == 'del') {
+            Vacancy::where('indexJobAion', $request->id)->delete();
+            echo 'this column is drop';
+            return redirect(url('/'));
+        }
+        return view('job.viewData', ['users' => $users, 'idJob' => $users["indexJobAion"]]);
     }
 
-     public function show(Vacancy $getJobVacancy, Request $request)
-    {
-        $users=$getJobVacancy->getJobVacancy($request->id, $request->param);
-       if ($users==null) {return redirect(url('/db'));}
 
-       return view('job.viewData', ['users'=>$users, 'idJob'=>$users["indexJobAion"]]);
-    }
-
-    public function edit($id)
-    {  echo 'edit';  }
-
-    public function update(Vacancy $updateJobinBase)
-    {
-        $data  = session()->get('flesh')['data'];
-        $index  = session()->get('flesh')['index'];
-        $updateJobinBase->updateJobinBase($data, $index);
-        return view('job.afterSaveBasedata', compact('data','index'));
-    }
-
-    public function destroy($id)
-    {        echo 'destroy';     }
 }
