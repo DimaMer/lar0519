@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Functional;
+use App\ParseFunction;
 
 class StartParse extends Command
 {
@@ -52,9 +52,9 @@ class StartParse extends Command
         }
 
         $this->line("you wrote: " . $count);
-        $requestControl = new Functional\RequestSite();
-        $parseControl = new Functional\ParseJobs();
-        $saveParseBase = new Functional\SaveParse();
+        $requestControl = new ParseFunction\RequestSite();
+        $parseControl = new ParseFunction\ParseJobs();
+        $saveParseBase = new ParseFunction\SaveParse();
 
         $getLinkJob = $requestControl->getLinkJob($configure['https'], $count);
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\Functional;
+namespace app\ParseFunction;
 
 class RequestSite
 {
-
-   function getJobDom( $myHttps)
+    const PATH_CLASSES= '//*[@class="%s"]';
+   function getJobDom(string $myHttps)
     {
         $client = new \GuzzleHttp\Client();
         return $client->request('GET', $myHttps);
@@ -19,13 +19,14 @@ class RequestSite
             $doc = new \DOMDocument;
             @$doc->loadHTML($response->getBody());
             $xpath = new \DOMXpath($doc);
-            $list = $xpath->query("//*[@class='" . $className . "']");
-
+            //$list = $xpath->query("//*[@class='" . $className . "']");
+            $list = $xpath->query(sprintf(self::PATH_CLASSES, $className));
             foreach ($list as $a_tag) {
                 $href = $a_tag->getAttribute('href');
                 $myHttps[] = $href;
                 $count--;
-                if ($count <= 0) return $myHttps;
+                if ($count <= 0)
+                {return $myHttps;}
             }
         }
         return $myHttps;

@@ -1,12 +1,11 @@
 
-{!! Form::open(array('action' => 'BaseDataController@index', 'method' => 'get')) !!}
+{!! Form::open(array('action' => 'ViewBasedataController@index', 'method' => 'get')) !!}
 {!! Form::submit('back') !!}
 {!! Form::close()!!}
 
 {!! Form::open(array('url' => "/$idJob/del", 'method' => 'get')) !!}
 {!! Form::submit('del') !!}
 {!! Form::close()!!}
-
 
 @foreach ($users as $key1=>$value1)
 

@@ -7,6 +7,6 @@
 
 @foreach ($urls as $l)
 
-    <a href="/{{$l->indexJobAion}}">{{$l->httpAinua}}</a><BR>
+    <a href="/{{$l->indexjob}}">{{$l->httpjob}}</a><BR>
 
 @endforeach

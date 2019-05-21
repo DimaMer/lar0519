@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/{id}/{param?}', 'BaseDataController@show');
-Route::resource('/', 'BaseDataController');
+Route::get('/{id}/{param?}', 'ViewBasedataController@show');
+Route::resource('/', 'ViewBasedataController');
 
