@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="231ded8a-8fc3-4f62-ac69-3bd27401c8a5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/php.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/ParseFunction/SaveParse.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Functional/SaveParse.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Console/Commands/StartParse.php" afterPath="$PROJECT_DIR$/app/Console/Commands/StartParse.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Vacancy.php" afterPath="$PROJECT_DIR$/app/Models/Vacancy.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/job/viewAllJob.blade.php" afterPath="$PROJECT_DIR$/resources/views/job/viewAllJob.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/job/viewData.blade.php" afterPath="$PROJECT_DIR$/resources/views/job/viewData.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Functional/ParseJobs.php" afterPath="$PROJECT_DIR$/app/ParseFunction/ParseJobs.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Functional/RequestSite.php" afterPath="$PROJECT_DIR$/app/ParseFunction/RequestSite.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Http/Controllers/BaseDataController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ViewBasedataController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ViewBasedataController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ViewBasedataController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,12 +18,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ParseJobs.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ParseJobs.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/ParseFunction/ParseJobs.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="18" column="48" lean-forward="false" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
+            <state relative-caret-position="396">
+              <caret line="12" column="59" lean-forward="true" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ViewBasedataController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ViewBasedataController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="25" column="49" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="49" />
+              <folding>
+                <element signature="e#40#68#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,12 +113,12 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/BaseDataController.php" />
         <option value="$PROJECT_DIR$/app/Functional/SaveParse.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/StartParse.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ViewBasedataController.php" />
         <option value="$PROJECT_DIR$/resources/views/job/viewData.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/ParseFunction/SaveParse.php" />
         <option value="$PROJECT_DIR$/app/ParseFunction/RequestSite.php" />
         <option value="$PROJECT_DIR$/app/ParseFunction/ParseJobs.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ViewBasedataController.php" />
       </list>
     </option>
   </component>
@@ -487,12 +487,12 @@
       <workItem from="1557731486923" duration="13448000" />
       <workItem from="1557824689554" duration="44000" />
       <workItem from="1557839505453" duration="97941000" />
-      <workItem from="1558428548147" duration="11906000" />
+      <workItem from="1558428548147" duration="14120000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123339000" />
+    <option name="totallyTimeSpent" value="125553000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -712,16 +712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ViewBasedataController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
-          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Vacancy.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -776,9 +766,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/ParseFunction/ParseJobs.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="18" column="48" lean-forward="false" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
+        <state relative-caret-position="396">
+          <caret line="12" column="59" lean-forward="true" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ViewBasedataController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="25" column="49" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="49" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

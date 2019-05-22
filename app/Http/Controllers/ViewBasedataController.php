@@ -23,7 +23,7 @@ class ViewBasedataController extends Controller
     public function show(Request $request)
     {
         $users = Vacancy::where('indexjob', $request->id);
-        if ($users == null) {
+        if (!$users||!$users->get()->toArray()) {
             return redirect(url('/'));
         }
         if  ($request->param == 'del') {
