@@ -1,12 +1,19 @@
 {
-    "https":"https://ain.ua/jobs/vacancy/",
-    "searchClasses":{
+    "httpsVacancy":"https://ain.ua/jobs/vacancy/",
+    "searchClassesVacancies":{
         "vacancy":"vacancy-title",
         "company":"company-title",
         "time":"time-passed",
         "vacancyInfoWrapper":"vacancy-info-wrapper vacancy-block post",
-        "companyDescription":"company-description vacancy-block post",
         "category":"selected-category",
         "cityVacancyCity":"selected-city vacancy-city"
+    },
+    "httpsCompany":"https://ain.ua/companies/",
+    "searchClassesCompanies":{
+        "url_company":"website",
+        "logo_company":"single-company-img",
+        "company_description":"about-company-info",
+        "facebook":"icon-facebook",
+        "linkedin":"company-description vacancy-block post"
     }
 }
