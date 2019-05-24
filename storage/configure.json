@@ -13,7 +13,7 @@
         "url_company":"website",
         "logo_company":"single-company-img",
         "company_description":"about-company-info",
-        "facebook":"icon-facebook",
+        "facebook":"social_like",
         "linkedin":"company-description vacancy-block post"
     }
 }
