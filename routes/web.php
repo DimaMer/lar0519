@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'VacanciesController@index');
+Route::resource('show', 'VacanciesController');
 
-Route::get('/{id}/{param?}', 'ViewBasedataController@show');
-Route::resource('/', 'ViewBasedataController');
+
+//Route::resource('temp', 'temp');
 

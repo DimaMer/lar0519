@@ -45,29 +45,47 @@ class StartParse extends Command
                 die("The file doesn't exist");
             }
         $configure = json_decode($contents, true);
+//
+//        while (1) {
+//            $count = $this->ask('How many need jobs parsing?');
+//            if (is_numeric($count)) break;
+//        }
+//
+//        $this->line("you wrote: " . $count);
+//        $requestControl = new ParseFunction\RequestSite();
+//        $parseControl = new ParseFunction\ParseJobs();
+//        $saveParseBase = new ParseFunction\SaveParse();
+//
+//
+//        $getLinkJob = $requestControl->getLinkJob($configure['httpsVacancy'], $count);
+//
+//        $this->output->progressStart(count($getLinkJob));
+//            foreach ($getLinkJob as $key => $value) {
+//                $this->info('');
+//                $resultDom = $requestControl->getJobDom($value);
+//                $resultParseJob[$value] = $parseControl->getParseJob($resultDom, $value, $configure['searchClassesVacancies']);
+//                $this->info("download: - " . $value);
+//                $saveParseBase->saveParseJob($resultParseJob[$value], $value);
+//                $this->info("parsed: - " . preg_replace("|[^0-9]|", "", $value));
+//                $this->output->progressAdvance();
+//            }
+//        $this->output->progressFinish();
+        $requestCompany = new ParseFunction\RequestCompany();
+        $parseCompany = new ParseFunction\ParseCompany();
+        $saveCompany = new ParseFunction\SaveCompany();
 
-        while (1) {
-            $count = $this->ask('How many need jobs parsing?');
-            if (is_numeric($count)) break;
+        $linkCompanies=$requestCompany->getCompaniesLink();
+
+        foreach ($linkCompanies as $linkCompany) {
+
+            $resultDomCompany = $requestCompany->getCompanyDom($linkCompany);
+//            dump ($resultDomCompany);
+            $resultParseCompany[$linkCompany] = $parseCompany->getParseCompany($resultDomCompany, $linkCompany, $configure['searchClassesCompanies']);
+
+           $saveCompany->saveCompany($resultParseCompany[$linkCompany], $linkCompany);
+
         }
 
-        $this->line("you wrote: " . $count);
-        $requestControl = new ParseFunction\RequestSite();
-        $parseControl = new ParseFunction\ParseJobs();
-        $saveParseBase = new ParseFunction\SaveParse();
-
-        $getLinkJob = $requestControl->getLinkJob($configure['https'], $count);
-
-        $this->output->progressStart(count($getLinkJob));
-            foreach ($getLinkJob as $key => $value) {
-                $this->info('');
-                $resultDom = $requestControl->getJobDom($value);
-                $resultParseJob[$value] = $parseControl->getParseJob($resultDom, $value, $configure['searchClasses']);
-                $this->info("download: - " . $value);
-                $saveParseBase->saveParseJob($resultParseJob[$value], $value);
-                $this->info("parsed: - " . preg_replace("|[^0-9]|", "", $value));
-                $this->output->progressAdvance();
-            }
-        $this->output->progressFinish();
+        //dump($resultDom);
     }
 }

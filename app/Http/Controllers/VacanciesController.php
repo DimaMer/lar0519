@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Vacancy;
 
-class BaseController extends Controller
+class VacanciesController extends Controller
 {
 
     public function index()
     {
         $vacancy = Vacancy::all();
-        return view('view_database.viewAllJob', ['vacancy' => $vacancy]);
+        $company = Company::all();
+        return view('view_database.viewAllJob', ['vacancy' => $vacancy, 'company' => $company]);
     }
 
     public function create()

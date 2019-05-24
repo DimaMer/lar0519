@@ -1,36 +1,30 @@
 <?php
 
 namespace app\ParseFunction;
-
-class RequestSite
+use App\Models\Vacancy;
+use App\Models\Company;
+class RequestCompany
 {
-    const PATH_CLASSES= '//*[@class="%s"]';
-   function getJobDom(string $myHttps)
+
+    //const PATH_CLASSES= '//*[@class="%s"]';
+   function getCompaniesLink()
+    {
+        $nameCmpanies= Vacancy::leftJoin('companies', 'company_id', '=', 'name_company')
+            ->select('company', 'company_id')
+            ->where('name_company')
+            ->get()->groupBy('company_id')->keys()->toArray();
+        return $nameCmpanies;
+    }
+
+    function getCompanyDom(string $myHttps)
     {
         $client = new \GuzzleHttp\Client();
         return $client->request('GET', $myHttps);
     }
 
-      function getLinkJob( $https, $count){
-        $client = new \GuzzleHttp\Client();
-        for ($i = 1; $i < 100; $i++) {
-            $response = $client->request('GET', $https . "page/" . $i . "/");
-            $className = 'post-link';
-            $doc = new \DOMDocument;
-            @$doc->loadHTML($response->getBody());
-            $xpath = new \DOMXpath($doc);
-            //$list = $xpath->query("//*[@class='" . $className . "']");
-            $list = $xpath->query(sprintf(self::PATH_CLASSES, $className));
-            foreach ($list as $a_tag) {
-                $href = $a_tag->getAttribute('href');
-                $myHttps[] = $href;
-                $count--;
-                if ($count <= 0)
-                {return $myHttps;}
-            }
-        }
-        return $myHttps;
-    }
+
+
+
 }
 
 

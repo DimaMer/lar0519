@@ -13,7 +13,8 @@ class temp extends Controller
      */
     public function index()
     {
-        //
+        echo 'index= http/<BR>';
+        return (view('temp'));
     }
 
     /**
@@ -23,7 +24,8 @@ class temp extends Controller
      */
     public function create()
     {
-        //
+        echo 'http\..\create';
+        return (view('temp'));
     }
 
     /**
@@ -34,7 +36,8 @@ class temp extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo 'store- post zapros' ;
+        return (view('temp'));
     }
 
     /**
@@ -45,7 +48,8 @@ class temp extends Controller
      */
     public function show($id)
     {
-        //
+        echo 'show';
+        return (view('temp'));
     }
 
     /**
@@ -56,7 +60,8 @@ class temp extends Controller
      */
     public function edit($id)
     {
-        //
+        echo 'edit';
+        return (view('temp'));
     }
 
     /**
@@ -68,7 +73,8 @@ class temp extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+                echo 'update';
+        return (view('temp'));
     }
 
     /**
@@ -79,6 +85,7 @@ class temp extends Controller
      */
     public function destroy($id)
     {
-        //
+        echo 'destroy';
+        return (view('temp'));
     }
 }

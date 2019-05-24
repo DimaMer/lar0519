@@ -9,14 +9,14 @@ class SaveCompany
 
     function saveCompany(array $data, string $index)
     {
-        $idJob = preg_replace("|[^0-9]|", "", $index);
 
+       // dump($data[$index]);
         foreach ($data[$index] as $keyParser => $value) {
-            Vacancy::updateOrCreate(
-                ['indexjob' => $idJob
+
+            Company::updateOrCreate(
+                ['name_company' => $index
                 ],
-                ['indexjob' => $idJob,
-                    'httpjob' => $index,
+                ['name_company' => $index,
                     $keyParser => $value,
 
                 ]
@@ -36,7 +36,7 @@ class SaveCompany
 //                    ->update([$key1 => $value1]);
 //            }
 //        }
-        return compact('data', 'idJob');
+        return 0;
     }
 
 }

@@ -17,7 +17,8 @@ class SaveParse
                 ],
                 ['indexjob' => $idJob,
                     'httpjob' => $index,
-                    $keyParser => $value
+                    $keyParser => $value,
+
                 ]
             );
         }
