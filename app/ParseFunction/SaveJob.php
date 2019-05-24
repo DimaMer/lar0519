@@ -4,24 +4,21 @@ namespace app\ParseFunction;
 
 use \App\Models\Vacancy;
 
-class SaveParse
+class SaveJob
 {
 
-    function saveParseJob(array $data, string $index)
+    function saveParseJob(array $dataJob, string $linkJob)
     {
-        $idJob = preg_replace("|[^0-9]|", "", $index);
-
-        foreach ($data[$index] as $keyParser => $value) {
-
-            $value = preg_replace('/^([ ]+)|([ ]){2,}/m', '$2', $value);
+        $idJob = preg_replace("|[^0-9]|", "", $linkJob);
+        foreach ($dataJob[$linkJob] as $keyParser => $value) {
+            $value = preg_replace('/^([ ]+)|([ ]){2,}/m', '$2', $value); //del space
 
             Vacancy::updateOrCreate(
                 ['indexjob' => $idJob
                 ],
                 ['indexjob' => $idJob,
-                    'httpjob' => $index,
+                    'httpjob' => $linkJob,
                     $keyParser => $value,
-
                 ]
             );
         }

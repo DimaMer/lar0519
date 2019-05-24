@@ -6,14 +6,14 @@ use App\Models\Company;
 class RequestCompany
 {
 
-    //const PATH_CLASSES= '//*[@class="%s"]';
    function getCompaniesLink()
     {
-        $nameCmpanies= Vacancy::leftJoin('companies', 'company_id', '=', 'name_company')
+        $nameCmpanies= Vacancy::leftJoin('companies', 'company_id', '=', 'url_parent_site')
             ->select('company', 'company_id')
-            ->where('name_company')
+            ->where('url_parent_site')
             ->get()->groupBy('company_id')->keys()->toArray();
-        return $nameCmpanies;
+
+      return $nameCmpanies;
     }
 
     function getCompanyDom(string $myHttps)

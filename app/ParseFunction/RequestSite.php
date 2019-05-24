@@ -13,7 +13,7 @@ class RequestSite
 
       function getLinkJob( $https, $count){
         $client = new \GuzzleHttp\Client();
-        for ($i = 1; $i < 100; $i++) {
+        for ($i = 1; $i < 10000; $i++) {
             $response = $client->request('GET', $https . "page/" . $i . "/");
             $className = 'post-link';
             $doc = new \DOMDocument;

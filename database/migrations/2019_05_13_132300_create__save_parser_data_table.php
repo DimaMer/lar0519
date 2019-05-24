@@ -13,17 +13,17 @@ class CreateSaveParserDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('vacancy_parser', function (Blueprint $table) {
+        Schema::create('vacancies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('indexJobAion');
-            $table->text('httpAinua');
+            $table->integer('indexjob');
+            $table->text('httpjob');
             $table->text('vacancy')->nullable();
             $table->text('company')->nullable();
             $table->text('time')->nullable();
             $table->text('vacancyInfoWrapper')->nullable();
-            $table->text('companyDescription')->nullable();
             $table->text('category')->nullable();
             $table->text('cityVacancyCity')->nullable();
+            $table->string('company_id')->nullable();
             $table->timestamp('add_base');
             $table->timestamps();
             /*

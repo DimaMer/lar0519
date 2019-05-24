@@ -11,20 +11,22 @@ class VacanciesController extends Controller
     public function index()
     {
         $vacancy = Vacancy::all();
-        $company = Company::all();
-        return view('view_database.viewAllJob', ['vacancy' => $vacancy, 'company' => $company]);
+        return view('view_database.viewAllJob', ['vacancy' => $vacancy]);
     }
 
     public function create()
     {
-                echo 'create';
+        echo 'create';
     }
 
 
     public function show($id)
     {
-        $users = Vacancy::where('indexjob', $id);
-        if (!$users||!$users->get()->toArray()) {
+        $users = Vacancy::Join('companies', 'url_parent_site', '=', 'company_id')
+            ->select('*')
+            ->where('indexjob',$id);
+
+        if (!$users || !$users->get()->toArray()) {
             return redirect(url('/'));
         }
         $users = $users->get()->toArray()[0];

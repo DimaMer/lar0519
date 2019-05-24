@@ -3,7 +3,12 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\ParseFunction;
+use App\ParseFunction\RequestSite;
+use App\ParseFunction\ParseJobs;
+use App\ParseFunction\SaveJob;
+use App\ParseFunction\RequestCompany;
+use App\ParseFunction\ParseCompany;
+use App\ParseFunction\SaveCompany;
 
 class StartParse extends Command
 {
@@ -39,53 +44,50 @@ class StartParse extends Command
     public function handle()
     {
         $filename = storage_path("configure.json");
-            try {
-                $contents = file_get_contents($filename);
-            } catch (Illuminate\Contracts\Filesystem\FileNotFoundException $exception) {
-                die("The file doesn't exist");
-            }
+        try {
+            $contents = file_get_contents($filename);
+        } catch (Illuminate\Contracts\Filesystem\FileNotFoundException $exception) {
+            die("The file doesn't exist");
+        }
         $configure = json_decode($contents, true);
-//
-//        while (1) {
-//            $count = $this->ask('How many need jobs parsing?');
-//            if (is_numeric($count)) break;
-//        }
-//
-//        $this->line("you wrote: " . $count);
-//        $requestControl = new ParseFunction\RequestSite();
-//        $parseControl = new ParseFunction\ParseJobs();
-//        $saveParseBase = new ParseFunction\SaveParse();
-//
-//
-//        $getLinkJob = $requestControl->getLinkJob($configure['httpsVacancy'], $count);
-//
-//        $this->output->progressStart(count($getLinkJob));
-//            foreach ($getLinkJob as $key => $value) {
-//                $this->info('');
-//                $resultDom = $requestControl->getJobDom($value);
-//                $resultParseJob[$value] = $parseControl->getParseJob($resultDom, $value, $configure['searchClassesVacancies']);
-//                $this->info("download: - " . $value);
-//                $saveParseBase->saveParseJob($resultParseJob[$value], $value);
-//                $this->info("parsed: - " . preg_replace("|[^0-9]|", "", $value));
-//                $this->output->progressAdvance();
-//            }
-//        $this->output->progressFinish();
-        $requestCompany = new ParseFunction\RequestCompany();
-        $parseCompany = new ParseFunction\ParseCompany();
-        $saveCompany = new ParseFunction\SaveCompany();
 
-        $linkCompanies=$requestCompany->getCompaniesLink();
+        while (1) {
+            $count = $this->ask('How many need jobs parsing?');
+            if (is_numeric($count)) break;
+        }
+
+        $this->line("you wrote: " . $count);
+        $requestControl = new RequestSite();
+        $parseControl = new ParseJobs();
+        $saveParseBase = new SaveJob();
+
+
+        $getLinkJob = $requestControl->getLinkJob($configure['httpsVacancy'], $count);
+
+        $this->output->progressStart(count($getLinkJob));
+        foreach ($getLinkJob as $linkJob) {
+            $this->info('');
+            $resultDom = $requestControl->getJobDom($linkJob);
+            $resultParseJob[$linkJob] = $parseControl->getParseJob($resultDom, $linkJob, $configure['searchClassesVacancies']);
+            $this->info("download: - " . $linkJob);
+            $saveParseBase->saveParseJob($resultParseJob[$linkJob], $linkJob);
+            $this->info("parsed: - " . preg_replace("|[^0-9]|", "", $linkJob));
+            $this->output->progressAdvance();
+        }
+        $this->output->progressFinish();
+        $requestCompany = new RequestCompany();
+        $parseCompany = new ParseCompany();
+        $saveCompany = new SaveCompany();
+
+        $linkCompanies = $requestCompany->getCompaniesLink();
 
         foreach ($linkCompanies as $linkCompany) {
 
             $resultDomCompany = $requestCompany->getCompanyDom($linkCompany);
-//            dump ($resultDomCompany);
-            $resultParseCompany[$linkCompany] = $parseCompany->getParseCompany($resultDomCompany, $linkCompany, $configure['searchClassesCompanies']);
-
-           $saveCompany->saveCompany($resultParseCompany[$linkCompany], $linkCompany);
-
+            $resultParseCompany[$linkCompany] = $parseCompany->getParseCompany($resultDomCompany, $linkCompany, $configure['searchCompanies']);
+            $saveCompany->saveCompany($resultParseCompany[$linkCompany], $linkCompany);
         }
 
-        //dump($resultDom);
+
     }
 }
