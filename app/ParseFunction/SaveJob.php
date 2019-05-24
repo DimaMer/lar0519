@@ -12,6 +12,9 @@ class SaveParse
         $idJob = preg_replace("|[^0-9]|", "", $index);
 
         foreach ($data[$index] as $keyParser => $value) {
+
+            $value = preg_replace('/^([ ]+)|([ ]){2,}/m', '$2', $value);
+
             Vacancy::updateOrCreate(
                 ['indexjob' => $idJob
                 ],
@@ -36,7 +39,7 @@ class SaveParse
 //                    ->update([$key1 => $value1]);
 //            }
 //        }
-        return compact('data', 'idJob');
+        //return compact('data', 'idJob');
     }
 
 }

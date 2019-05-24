@@ -1,19 +1,60 @@
 {
-    "httpsVacancy":"https://ain.ua/jobs/vacancy/",
-    "searchClassesVacancies":{
-        "vacancy":"vacancy-title",
-        "company":"company-title",
-        "time":"time-passed",
-        "vacancyInfoWrapper":"vacancy-info-wrapper vacancy-block post",
-        "category":"selected-category",
-        "cityVacancyCity":"selected-city vacancy-city"
+  "httpsVacancy": "https://ain.ua/jobs/vacancy/",
+  "searchClassesVacancies": {
+    "vacancy": {
+      "class": "vacancy-title",
+      "atr": "0"
     },
-    "httpsCompany":"https://ain.ua/companies/",
-    "searchClassesCompanies":{
-        "url_company":"website",
-        "logo_company":"single-company-img",
-        "company_description":"about-company-info",
-        "facebook":"social_like",
-        "linkedin":"company-description vacancy-block post"
+    "company": {
+      "class": "company-title",
+      "atr": "0"
+    },
+    "time": {
+      "class": "time-passed",
+      "atr": "0"
+    },
+    "vacancyInfoWrapper": {
+      "class": "vacancy-info-wrapper vacancy-block post",
+      "atr": "0"
+    },
+    "category": {
+      "class": "selected-category",
+      "atr": "0"
+    },
+    "cityVacancyCity": {
+      "class": "selected-city vacancy-city",
+      "atr": "0"
+    },
+    "company_id": {
+      "class": "company-title",
+      "atr": "href"
     }
+  },
+  "httpsCompany": "https://ain.ua/companies/",
+  "searchCompanies": {
+    "name_company": {
+      "class": "company-title",
+      "atr": "0"
+    },
+    "url_company": {
+      "class": "website",
+      "atr": "0"
+    },
+    "logo_company": {
+      "class": "single-company-img",
+      "atr": "0"
+    },
+    "company_description": {
+      "class": "description",
+      "atr": "0"
+    },
+    "twitter": {
+      "class": "tw_like",
+      "atr": "href"
+    },
+    "facebook": {
+      "class": "fb_like",
+      "atr": "href"
+    }
+  }
 }
