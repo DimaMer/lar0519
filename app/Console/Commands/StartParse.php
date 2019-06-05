@@ -63,7 +63,9 @@ class StartParse extends Command
 
 
         $getLinkJob = $requestControl->getLinkJob($configure['httpsVacancy'], $count);
-
+//        for($i=2;$i<10;$i++) {
+//print_r($getLinkJob[$i]->getAttribute('href'));
+//        echo$i;}
         $this->output->progressStart(count($getLinkJob));
         foreach ($getLinkJob as $linkJob) {
             $this->info('');

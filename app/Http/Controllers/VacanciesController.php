@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\Vacancy;
 
@@ -39,6 +39,43 @@ class VacanciesController extends Controller
         $users->delete();
         return redirect(url('/'));
     }
+    public function store(Request $request)
+    {
+        $jsson=array();
+$vac=collect();
+        foreach ($_POST as $key=>$vacan) {
+            // $vac[] = Vacancy::with($vacan)->where('indexjob',$vacan);}
+
+
+            // dump ($vac);
+
+            $vac->push(Vacancy::where('indexjob', $vacan)->first());
+
+        }
+
+
+        //$vac=json_encode($vac);
+        $vac=$vac->toArray();
+        foreach ($vac as $key=>$vacan) {
+            $jsson[$key]["id"] = $vac[$key]['id'];
+            $jsson[$key]["vacancy_id"] = $vac[$key]['indexjob'];
+            $jsson[$key]["name"] = $vac[$key]['vacancy'];
+            $jsson[$key]["companyName"] = $vac[$key]['company'];
+            $jsson[$key]["city"] = $vac[$key]['cityVacancyCity'];
+            $jsson[$key]["date"] = $vac[$key]['time'];
+            $jsson[$key]["salary"] = '0';
+            $jsson[$key]["salary_unit"] = '$';
+            $jsson[$key]["description"] = $vac[$key]['vacancyInfoWrapper'];
+        }
+
+        $jsson=json_encode($jsson);
+
+        return view('view_database.viewJsonSebd', ['vacancy' => $jsson]);
+
+        //echo ($_POST[2]);
+        //return (view('temp'));
+    }
+
 
 
 }

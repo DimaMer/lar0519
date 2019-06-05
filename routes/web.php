@@ -13,6 +13,5 @@
 Route::get('/', 'VacanciesController@index');
 Route::resource('show', 'VacanciesController');
 
-
 //Route::resource('temp', 'temp');
 
