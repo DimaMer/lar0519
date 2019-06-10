@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Vacancy;
 class temp extends Controller
 {
     /**
@@ -13,8 +13,10 @@ class temp extends Controller
      */
     public function index()
     {
-        echo 'index= http/<BR>';
-        return (view('temp'));
+
+        $a =Vacancy::orderBy('id', 'desc')->Simplepaginate(10);
+        //print_r($a[0]);
+        return view('temp', ['articles' => $a[0]]);
     }
 
     /**

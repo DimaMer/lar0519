@@ -8,6 +8,10 @@ use App\Models\Vacancy;
 class VacanciesController extends Controller
 {
 
+
+
+
+
     public function index()
     {
         $vacancy = Vacancy::all();
