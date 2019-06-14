@@ -16,7 +16,6 @@ Route::resource('show', 'VacanciesController');
 
 
 Route::get('api/search', [
-    'as' => 'api.search',
     'uses' => 'Api\SearchController@search'
 ]);
 

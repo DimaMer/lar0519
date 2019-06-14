@@ -10,26 +10,50 @@
 </head>
 <body style="width:90%; margin:50px; ">
 
-
-
 @if( $vacancy->all()==null )
     <div>the base is empty</div>
 @endif
 
-
 {!! Form::open(['action' => 'VacanciesController@store']) !!}
+
+<div>
+    <input type="text" placeholder="What are you looking for?"
+           v-model="query">
+    <span>
+<button class="btn" type="button" @click="search()" v-if="!loading">Search!</button>
+        <button class="btn" type="button" disabled="disabled" v-if="loading">Searching...</button>
+                        </span>
+    {!! Form::submit('send after search') !!}
+</div>
+
+
+<div v-if="error">
+    <span aria-hidden="true"></span>
+    @{{ error }}
+</div>
+
+<div style="display: flex; ">
+
+    <div style="border: 4px double black; " v-for="(key, product) in job">
+
+        <input v-bind:name=key type="checkbox" v-bind:value=product.indexjob>
+        <span>select job</span>
+        <p v-for="prod in product">*@{{ prod }}</p>
+    </div>
+</div>
+{!! Form::close()!!}
+{!! Form::open(['action' => 'VacanciesController@store']) !!}
+<span style="   margin-left: 40%;  ">
+    {!! Form::submit('send selected json-vacancies to site') !!} </span>
 <table class="table_price">
     <caption>Vacancy</caption>
     <tr>
         <th>Vacancy</th>
         <th>Company</th>
         <th>Time ago</th>
-        <th>select vacancy <br>
+        <th>select ALL vacancy <br>
 
-
-
-
-            {!! Form::checkbox('all',$vacancy[4]['indexjob'],false) !!}
+            {!! Form::checkbox('all','all',false) !!}
         </th>
     </tr>
     @foreach ($vacancy as $key=>$l)
@@ -42,32 +66,10 @@
     @endforeach
 </table>
 
-
-{!! Form::submit('send selected json-vacancies to site') !!}
 {!! Form::close()!!}
 
 </div>
 
-
-
-
-<div>
-    <input type="text" placeholder="What are you looking for?"
-           v-model="query">
-</div>
-<span>
-<button class="btn" type="button" @click="search()" v-if="!loading">Search!</button>
-    <button class="btn" type="button" disabled="disabled" v-if="loading">Searching...</button>
-                        </span>
-<div v-if="error">
-    <span aria-hidden="true"></span>
-    @{{ error }}
-</div>
-<div >
-    <div style="border: 4px double black; " v-for="product in job">
-        <p v-for="prod in product">*@{{ prod }}</p>
-    </div>
-</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.1/vue-resource.min.js"></script>
 <script src="/js/app.js"></script>

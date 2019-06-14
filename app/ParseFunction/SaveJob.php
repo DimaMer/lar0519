@@ -24,19 +24,6 @@ class SaveJob
         }
 
 
-//        foreach ($data as $key => $value) {
-//            if (Vacancy::where('indexjob', $index)->first() == NULL) {
-//                Vacancy::insertGetId(
-//                    ['indexjob' => $index, 'httpjob' => $key]
-//                );
-//            }
-//            foreach ($value as $key1 => $value1) {
-//
-//                Vacancy::where('indexjob', $index)
-//                    ->update([$key1 => $value1]);
-//            }
-//        }
-        //return compact('data', 'idJob');
     }
 
 }

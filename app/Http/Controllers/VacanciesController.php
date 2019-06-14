@@ -1,15 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\Vacancy;
 
 class VacanciesController extends Controller
 {
-
-
-
 
 
     public function index()
@@ -27,8 +25,7 @@ class VacanciesController extends Controller
     public function show($id)
     {
         $users = Vacancy::Join('companies', 'url_parent_site', '=', 'company_id')
-            ->select('*')
-            ->where('indexjob',$id);
+            ->where('indexjob', $id);
 
         if (!$users || !$users->get()->toArray()) {
             return redirect(url('/'));
@@ -43,24 +40,26 @@ class VacanciesController extends Controller
         $users->delete();
         return redirect(url('/'));
     }
+
     public function store(Request $request)
     {
-        $jsson=array();
-$vac=collect();
-        foreach ($_POST as $key=>$vacan) {
-            // $vac[] = Vacancy::with($vacan)->where('indexjob',$vacan);}
+        $jsson = array();
+        $vac = collect();
 
+        if (@$_POST['all']) {
+            $vacancy = Vacancy::all();
+            return view('view_database.viewJsonSebd', ['vacancy' => $vacancy]);
+        } else {
 
-            // dump ($vac);
-
-            $vac->push(Vacancy::where('indexjob', $vacan)->first());
-
+            foreach ($_POST as $key => $vacan) {
+                $vac->push(Vacancy::where('indexjob', $vacan)->first());
+            }
         }
 
 
         //$vac=json_encode($vac);
-        $vac=$vac->toArray();
-        foreach ($vac as $key=>$vacan) {
+        $vac = $vac->toArray();
+        foreach ($vac as $key => $vacan) {
             $jsson[$key]["id"] = $vac[$key]['id'];
             $jsson[$key]["vacancy_id"] = $vac[$key]['indexjob'];
             $jsson[$key]["name"] = $vac[$key]['vacancy'];
@@ -72,14 +71,13 @@ $vac=collect();
             $jsson[$key]["description"] = $vac[$key]['vacancyInfoWrapper'];
         }
 
-        $jsson=json_encode($jsson);
+        $jsson = json_encode($jsson);
 
         return view('view_database.viewJsonSebd', ['vacancy' => $jsson]);
 
         //echo ($_POST[2]);
         //return (view('temp'));
     }
-
 
 
 }
