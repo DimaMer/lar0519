@@ -52,7 +52,7 @@ class StartParse extends Command
         $configure = json_decode($contents, true);
 
         while (1) {
-            $count = $this->ask('How many need jobs parsing?');
+            $count = $this->ask('How many need jobs par1sing?');
             if (is_numeric($count)) break;
         }
 
@@ -63,9 +63,7 @@ class StartParse extends Command
 
 
         $getLinkJob = $requestControl->getLinkJob($configure['httpsVacancy'], $count);
-//        for($i=2;$i<10;$i++) {
-//print_r($getLinkJob[$i]->getAttribute('href'));
-//        echo$i;}
+
         $this->output->progressStart(count($getLinkJob));
         foreach ($getLinkJob as $linkJob) {
             $this->info('');
