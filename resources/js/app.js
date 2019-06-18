@@ -1,32 +1,17 @@
+import Vue from 'vue';
+import test  from './components/ExampleComponent.vue';
+
+
+import VueResource from 'vue-resource';
+Vue.use(VueResource);
 new Vue({
 
-    el: 'body',
+    el: '#app',
 
-    data: {
-        job: [],
-        loading: false,
-        error: false,
-        query: ''
-    },
 
-    methods: {
-        search: function() {
+    components: {
+        test },
 
-            this.error = '';
 
-            this.job = [];
-
-            this.loading = true;
-
-            this.$http.get('/api/search?q=' + this.query).then((response) => {
-
-                response.body.error ? this.error = response.body.error : this.job = response.body;
-
-                this.loading = false;
-
-                this.query = '';
-            });
-        }
-    }
 
 });
