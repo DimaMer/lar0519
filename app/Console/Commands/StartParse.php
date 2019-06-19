@@ -9,6 +9,7 @@ use App\ParseFunction\SaveJob;
 use App\ParseFunction\RequestCompany;
 use App\ParseFunction\ParseCompany;
 use App\ParseFunction\SaveCompany;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
 class StartParse extends Command
 {
@@ -44,15 +45,15 @@ class StartParse extends Command
     public function handle()
     {
         $filename = storage_path("configure.json");
-        try {
-            $contents = file_get_contents($filename);
-        } catch (Illuminate\Contracts\Filesystem\FileNotFoundException $exception) {
-            die("The file doesn't exist");
-        }
+            try {
+                $contents = file_get_contents($filename);
+            } catch (FileNotFoundException $exception) {
+                die("The file doesn't exist");
+            }
         $configure = json_decode($contents, true);
 
         while (1) {
-            $count = $this->ask('How many need jobs parsing?');
+            $count = $this->ask('How many need jobs par1sing?');
             if (is_numeric($count)) break;
         }
 
@@ -63,14 +64,15 @@ class StartParse extends Command
 
 
         $getLinkJob = $requestControl->getLinkJob($configure['httpsVacancy'], $count);
-//        for($i=2;$i<10;$i++) {
-//print_r($getLinkJob[$i]->getAttribute('href'));
-//        echo$i;}
+
         $this->output->progressStart(count($getLinkJob));
         foreach ($getLinkJob as $linkJob) {
             $this->info('');
             $resultDom = $requestControl->getJobDom($linkJob);
-            $resultParseJob[$linkJob] = $parseControl->getParseJob($resultDom, $linkJob, $configure['searchClassesVacancies']);
+            $resultParseJob[$linkJob] = $parseControl->getParseJob(
+                $resultDom,
+                $linkJob,
+                $configure['searchClassesVacancies']);
             $this->info("download: - " . $linkJob);
             $saveParseBase->saveParseJob($resultParseJob[$linkJob], $linkJob);
             $this->info("parsed: - " . preg_replace("|[^0-9]|", "", $linkJob));
@@ -84,12 +86,9 @@ class StartParse extends Command
         $linkCompanies = $requestCompany->getCompaniesLink();
 
         foreach ($linkCompanies as $linkCompany) {
-
             $resultDomCompany = $requestCompany->getCompanyDom($linkCompany);
             $resultParseCompany[$linkCompany] = $parseCompany->getParseCompany($resultDomCompany, $linkCompany, $configure['searchCompanies']);
             $saveCompany->saveCompany($resultParseCompany[$linkCompany], $linkCompany);
         }
-
-
     }
 }

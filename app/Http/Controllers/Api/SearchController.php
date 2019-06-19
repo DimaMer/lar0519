@@ -12,15 +12,10 @@ class SearchController extends Controller
     {
 
         $error = ['error' => 'No results found, please try with different keywords.'];
-
         if($request->has('q')) {
-
             $posts = Vacancy::where('vacancy', 'like' ,'%'.$request->get('q').'%')->get();
-
             return $posts->count() ? $posts : $error;
-
         }
-
         return $error;
     }
 }
