@@ -37,16 +37,11 @@ class VacanciesController extends Controller
     public function store(Request $request)
     {
         $jsson = array();
-        $vac = collect();
-
+        $query = Vacancy::Join('companies', 'url_parent_site', '=', 'company_id');
         if (@$_POST['all']) {
-            $vac = Vacancy::Join('companies', 'url_parent_site', '=', 'company_id')
-                ->get()->toArray();
+            $vac = $query->get()->toArray();
         } else {
-            foreach ($_POST as $key => $vacan) {
-               $vac->push(Vacancy::Join('companies', 'url_parent_site', '=', 'company_id')
-                    ->where('indexjob', $vacan)->first());
-            }
+            $vac=($query->whereIn('indexjob', $_POST)->get());
         }
 
         foreach ($vac as $key => $vacan) {
@@ -59,7 +54,7 @@ class VacanciesController extends Controller
             $jsson[$key]["salary"]      =   '0';
             $jsson[$key]["salary_unit"] =   '$';
             $jsson[$key]["description"] =   $vac[$key]['vacancyInfoWrapper'];
-           $jsson[$key]["site"]         =   $vac[$key]['url_company'];
+            $jsson[$key]["site"]        =   $vac[$key]['url_company'];
             $jsson[$key]["logo"]        =   $vac[$key]['logo_company'];
         }
         $jsson = json_encode($jsson);
