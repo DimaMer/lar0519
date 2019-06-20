@@ -75,6 +75,12 @@
                         <th>
                             describe
                         </th>
+<th @click="sort('time')">
+                            time
+                            <p class="tooltip">
+                                <br>sort
+                            </p>
+                        </th>
                     </tr>
                 </thead>
 
@@ -96,6 +102,9 @@
                         </td>
                         <td>
                             {{product.vacancyInfoWrapper}}
+                        </td>
+<td>
+                            {{product.time}}
                         </td>
                     </tr>
                 </tbody>

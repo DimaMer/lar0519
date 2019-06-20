@@ -202,6 +202,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1438,7 +1447,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("\n                Search!\n            ")]
+              [_vm._v("\n                    Search!\n                ")]
             )
           : _vm._e(),
         _vm._v(" "),
@@ -1449,7 +1458,7 @@ var render = function() {
                 staticClass: "btn",
                 attrs: { type: "button", disabled: "disabled" }
               },
-              [_vm._v("\n                Searching...\n            ")]
+              [_vm._v("\n                    Searching...\n                ")]
             )
           : _vm._e()
       ])
@@ -1458,7 +1467,7 @@ var render = function() {
     _vm.error
       ? _c("div", [
           _c("span", { attrs: { "aria-hidden": "true" } }),
-          _vm._v("\n        " + _vm._s(_vm.error) + "\n    ")
+          _vm._v("\n            " + _vm._s(_vm.error) + "\n        ")
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -1467,41 +1476,43 @@ var render = function() {
           _c("p", { staticClass: "page" }),
           _c("div", { staticClass: "page" }, [
             _vm._v(
-              "\n                found-" +
+              "\n                    found-" +
                 _vm._s(_vm.job.length) +
-                "-jobs\n            "
+                "-jobs\n                "
             )
           ]),
           _vm._v(" "),
           _c(
             "button",
             { attrs: { type: "button" }, on: { click: _vm.prevPage } },
-            [_vm._v("\n                Previous\n            ")]
+            [_vm._v("\n                    Previous\n                ")]
           ),
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n                " + _vm._s(_vm.currentPage) + "\n            "
+              "\n                    " +
+                _vm._s(_vm.currentPage) +
+                "\n                "
             )
           ]),
           _vm._v(" "),
           _c(
             "button",
             { attrs: { type: "button" }, on: { click: _vm.nextPage } },
-            [_vm._v("\n                Next\n            ")]
+            [_vm._v("\n                    Next\n                ")]
           ),
           _vm._v(" "),
           _c(
             "button",
             { attrs: { type: "button" }, on: { click: _vm.allpage } },
-            [_vm._v("\n                All page\n            ")]
+            [_vm._v("\n                    All page\n                ")]
           ),
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n                " +
+              "\n                    " +
                 _vm._s(Math.ceil(_vm.job.length / 4)) +
-                "-pages\n            "
+                "-pages\n                "
             )
           ]),
           _vm._v(" "),
@@ -1523,7 +1534,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                        Vacancy\n                        "
+                      "\n                            Vacancy\n                            "
                     ),
                     _vm._m(1)
                   ]
@@ -1540,7 +1551,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                        Company\n                        "
+                      "\n                            Company\n                            "
                     ),
                     _vm._m(2)
                   ]
@@ -1548,9 +1559,26 @@ var render = function() {
                 _vm._v(" "),
                 _c("th", [
                   _vm._v(
-                    "\n                        describe\n                    "
+                    "\n                            describe\n                        "
                   )
-                ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "th",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.sort("time")
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            time\n                            "
+                    ),
+                    _vm._m(3)
+                  ]
+                )
               ])
             ]),
             _vm._v(" "),
@@ -1566,32 +1594,40 @@ var render = function() {
                     _vm._v(" "),
                     _c("span", [
                       _vm._v(
-                        "\n                            select\n                        "
+                        "\n                                select\n                            "
                       )
                     ])
                   ]),
                   _vm._v(" "),
                   _c("td", [
                     _vm._v(
-                      "\n                        " +
+                      "\n                            " +
                         _vm._s(product.vacancy) +
-                        "\n                    "
+                        "\n                        "
                     )
                   ]),
                   _vm._v(" "),
                   _c("td", [
                     _vm._v(
-                      "\n                        " +
+                      "\n                            " +
                         _vm._s(product.company) +
-                        "\n                    "
+                        "\n                        "
                     )
                   ]),
                   _vm._v(" "),
                   _c("td", [
                     _vm._v(
-                      "\n                        " +
+                      "\n                            " +
                         _vm._s(product.vacancyInfoWrapper) +
-                        "\n                    "
+                        "\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(product.time) +
+                        "\n                        "
                     )
                   ])
                 ])
@@ -1609,7 +1645,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("th", [
-      _vm._v("\n                        select all"),
+      _vm._v("\n                            select all"),
       _c("br"),
       _vm._v(" "),
       _c("input", { attrs: { name: "all", type: "checkbox", value: "all" } })
@@ -1621,7 +1657,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "tooltip" }, [
       _c("br"),
-      _vm._v("sort\n                        ")
+      _vm._v("sort\n                            ")
     ])
   },
   function() {
@@ -1630,7 +1666,16 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "tooltip" }, [
       _c("br"),
-      _vm._v("sort\n                        ")
+      _vm._v("sort\n                            ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "tooltip" }, [
+      _c("br"),
+      _vm._v("sort\n                            ")
     ])
   }
 ]
@@ -15446,8 +15491,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\phpProjects\lar14\lar0519\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\phpProjects\lar14\lar0519\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/vagrant/Code/lar0519/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vagrant/Code/lar0519/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),
