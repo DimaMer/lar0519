@@ -91,4 +91,8 @@ class StartParse extends Command
             $saveCompany->saveCompany($resultParseCompany[$linkCompany], $linkCompany);
         }
     }
+    protected function schedule(Schedule $schedule)
+    {
+       $schedule->command('start:parse')->dailyAt('08:00');
+    }  
 }
