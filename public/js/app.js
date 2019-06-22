@@ -211,6 +211,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -293,7 +295,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.table {\n    border-collapse: collapse;\n    border-top: 3px solid #a5c0f7;\n    border-left: 3px solid #a5c0f7;\n    border-right: 3px solid #a5c0f7;\n    border-bottom: 3px solid #a5c0f7;\n    font-family: \"Lucida Grande\", sans-serif;\n}\n.table td, .table th {\n    padding: 10px;\n    text-align: center;\n    border-bottom: 3px solid #a5c0f7;\n    border-right: 3px solid #a5c0f7;\n}\n.table th {\n    text-align: center;\n    font-size: 14px;\n    border-bottom: 3px solid #a5c0f7;\n    border-right: 3px solid #a5c0f7;\n}\n.table tr:nth-child(2n) {\n    background: #E5E5E5;\n}\n.table td:last-of-type {\n    text-align: center;\n}\n.table th:hover {\n    background: lightcyan;\n    top: 2px;\n    left: 2px;\n}\n.tooltip {\n    display: none;\n}\nth:hover .tooltip {\n    display: inline;\n}\n.page {\n    font-size: 26px;\n}\n", ""]);
+exports.push([module.i, "\n.table th:hover {\n    background: grey;\n    top: 2px;\n    left: 2px;\n}\n.tooltip {\ndisplay: none;\n    position: relative;\n}\nth:hover .tooltip{\n    display: inline;\n     opacity: 0.7;\n}\n.page {\n    font-size: 26px;\n}\n", ""]);
 
 // exports
 
@@ -1409,72 +1411,77 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "container" }, [
     _c("div", [
-      _c("input", { attrs: { type: "submit", value: "send to site" } }),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.query,
-            expression: "query"
-          }
-        ],
-        attrs: { type: "text", placeholder: "Search all" },
-        domProps: { value: _vm.query },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.query = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("span", [
-        !_vm.loading
-          ? _c(
-              "button",
-              {
-                staticClass: "btn",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.search()
-                  }
-                }
-              },
-              [_vm._v("\n                    Search!\n                ")]
-            )
-          : _vm._e(),
+      _c("div", { staticClass: "mx-auto" }, [
+        _c("input", {
+          staticClass: "btn btn-success",
+          attrs: { type: "submit", value: "send to site" }
+        }),
         _vm._v(" "),
-        _vm.loading
-          ? _c(
-              "button",
-              {
-                staticClass: "btn",
-                attrs: { type: "button", disabled: "disabled" }
-              },
-              [_vm._v("\n                    Searching...\n                ")]
-            )
-          : _vm._e()
-      ])
-    ]),
-    _vm._v(" "),
-    _vm.error
-      ? _c("div", [
-          _c("span", { attrs: { "aria-hidden": "true" } }),
-          _vm._v("\n            " + _vm._s(_vm.error) + "\n        ")
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.query,
+              expression: "query"
+            }
+          ],
+          attrs: { type: "text", placeholder: "Search all" },
+          domProps: { value: _vm.query },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.query = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("span", [
+          !_vm.loading
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      return _vm.search()
+                    }
+                  }
+                },
+                [_vm._v("\n                    Search!\n                ")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.loading
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn",
+                  attrs: { type: "button", disabled: "disabled" }
+                },
+                [_vm._v("\n                    Searching...\n                ")]
+              )
+            : _vm._e()
         ])
-      : _vm._e(),
+      ]),
+      _vm._v(" "),
+      _vm.error
+        ? _c("div", [
+            _c("span", { attrs: { "aria-hidden": "true" } }),
+            _vm._v("\n            " + _vm._s(_vm.error) + "\n        ")
+          ])
+        : _vm._e()
+    ]),
     _vm._v(" "),
     _vm.view
       ? _c("div", { attrs: { display: "none" } }, [
           _c("p", { staticClass: "page" }),
-          _c("div", { staticClass: "page" }, [
+          _c("div", { staticClass: "badge badge-secondary text-wrap" }, [
             _vm._v(
               "\n                    found-" +
                 _vm._s(_vm.job.length) +
@@ -1484,11 +1491,15 @@ var render = function() {
           _vm._v(" "),
           _c(
             "button",
-            { attrs: { type: "button" }, on: { click: _vm.prevPage } },
+            {
+              staticClass: "btn btn-primary btn-sm",
+              attrs: { type: "button" },
+              on: { click: _vm.prevPage }
+            },
             [_vm._v("\n                    Previous\n                ")]
           ),
           _vm._v(" "),
-          _c("span", [
+          _c("span", { staticClass: "badge badge-secondary text-wrap" }, [
             _vm._v(
               "\n                    " +
                 _vm._s(_vm.currentPage) +
@@ -1498,17 +1509,25 @@ var render = function() {
           _vm._v(" "),
           _c(
             "button",
-            { attrs: { type: "button" }, on: { click: _vm.nextPage } },
+            {
+              staticClass: "btn btn-primary btn-sm",
+              attrs: { type: "button" },
+              on: { click: _vm.nextPage }
+            },
             [_vm._v("\n                    Next\n                ")]
           ),
           _vm._v(" "),
           _c(
             "button",
-            { attrs: { type: "button" }, on: { click: _vm.allpage } },
+            {
+              staticClass: "btn btn-primary btn-sm",
+              attrs: { type: "button" },
+              on: { click: _vm.allpage }
+            },
             [_vm._v("\n                    All page\n                ")]
           ),
           _vm._v(" "),
-          _c("span", [
+          _c("span", { staticClass: "badge badge-secondary text-wrap" }, [
             _vm._v(
               "\n                    " +
                 _vm._s(Math.ceil(_vm.job.length / 4)) +
@@ -1518,8 +1537,8 @@ var render = function() {
           _vm._v(" "),
           _c("p"),
           _vm._v(" "),
-          _c("table", { staticClass: "table" }, [
-            _c("thead", [
+          _c("table", { staticClass: "table table-striped" }, [
+            _c("thead", { staticClass: "thead-dark" }, [
               _c("tr", [
                 _vm._m(0),
                 _vm._v(" "),

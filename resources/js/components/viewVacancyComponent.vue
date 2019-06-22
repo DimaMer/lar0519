@@ -1,14 +1,16 @@
 <template>
-    <div>
+    <div class="container">
         <div>
-            <input type="submit"
+        <div class="mx-auto">
+            <input type="submit" class="btn btn-success"
                    value="send to site">
             <input type="text"
                    placeholder="Search all"
                    v-model="query">
 
             <span>
-                <button class="btn"
+
+                <button class="btn btn-primary"
                         type="button"
                         @click="search()"
                         v-if="!loading">
@@ -28,33 +30,33 @@
             <span aria-hidden="true"></span>
             {{ error }}
         </div>
-
+</div>
         <div v-if="view" display="none">
             <p class="page">
-                <div class="page">
+                <div class="badge badge-secondary text-wrap" >
                     found-{{job.length}}-jobs
                 </div>
-                <button type="button"
+                <button type="button" class="btn btn-primary btn-sm"
                         @click="prevPage">
                     Previous
                 </button>
-                <span>
+                <span class="badge badge-secondary text-wrap" >
                     {{currentPage}}
                 </span>
-                <button type="button"
+                <button type="button" class="btn btn-primary btn-sm"
                         @click="nextPage">
                     Next
                 </button>
-                <button type="button"
+                <button type="button"  class="btn btn-primary btn-sm"
                         @click="allpage">
                     All page
                 </button>
-                <span>
+                <span class="badge badge-secondary text-wrap" >
                     {{Math.ceil(job.length/4)}}-pages
                 </span>
             </p>
-            <table class="table">
-                <thead>
+            <table class="table table-striped">
+                <thead class="thead-dark">
                     <tr>
                         <th>
                             select all</br>
@@ -180,43 +182,20 @@
     }
 </script>
 <style>
-    .table {
-        border-collapse: collapse;
-        border-top: 3px solid #a5c0f7;
-        border-left: 3px solid #a5c0f7;
-        border-right: 3px solid #a5c0f7;
-        border-bottom: 3px solid #a5c0f7;
-        font-family: "Lucida Grande", sans-serif;
-    }
-    .table td, .table th {
-        padding: 10px;
-        text-align: center;
-        border-bottom: 3px solid #a5c0f7;
-        border-right: 3px solid #a5c0f7;
-    }
-    .table th {
-        text-align: center;
-        font-size: 14px;
-        border-bottom: 3px solid #a5c0f7;
-        border-right: 3px solid #a5c0f7;
-    }
-    .table tr:nth-child(2n) {
-        background: #E5E5E5;
-    }
-
-    .table td:last-of-type {
-        text-align: center;
-    }
+    
     .table th:hover {
-        background: lightcyan;
+        background: grey;
         top: 2px;
         left: 2px;
     }
     .tooltip {
-        display: none;
+    display: none;
+        position: relative;
     }
-    th:hover .tooltip {
+    
+    th:hover .tooltip{
         display: inline;
+         opacity: 0.7; 
     }
     .page {
         font-size: 26px;
